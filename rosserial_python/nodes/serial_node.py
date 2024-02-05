@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #####################################################################
 # Software License Agreement (BSD License)
@@ -44,10 +44,10 @@ import multiprocessing
 import sys
 
 if __name__=="__main__":
-    rospy.init_node("serial_node")
+    rospy.init_node("Node_Motor")
     rospy.loginfo("ROS Serial Python Node")
 
-    port_name = rospy.get_param('~port','/dev/ttyUSB0')
+    port_name = rospy.get_param('~port','/dev/ttyACM0')
     baud = int(rospy.get_param('~baud','57600'))
 
     # for systems where pyserial yields errors in the fcntl.ioctl(self.fd, TIOCMBIS, \
@@ -59,7 +59,7 @@ if __name__=="__main__":
     if(rospy.has_param('~tcp_port')):
         tcp_portnum = int(rospy.get_param('~tcp_port'))
     else:
-        tcp_portnum = int(rospy.get_param('/rosserial_embeddedlinux/tcp_port', '11411'))
+        tcp_portnum = int(rospy.get_param('/rosserial_embeddedlinux/tcp_port', '11311'))
     
     if(rospy.has_param('~fork_server')):
         fork_server = rospy.get_param('~fork_server')
